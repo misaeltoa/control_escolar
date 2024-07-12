@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Registrar Alumno</h2>
+    <form action="{{ url_for('alumnos') }}" method="POST" class="form-inline">
+        <div class="form-group mb-2 mr-4">
+            <label for="matricula" class="sr-only">Matrícula</label>
+            <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Matrícula" required>
+        </div>
+        <div class="form-group mb-2 mr-4">
+            <label for="nombre" class="sr-only">Nombre con apellido</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre con apellido" required>
+        </div>
+        <div class="form-group mb-2 mr-4">
+            <label for="carrera" class="sr-only">Carrera</label>
+            <select class="form-control" id="carrera" name="carrera" required>
+                <option value="">Selecciona una carrera</option>
+                <option value="Tecnologías de la Información">Tecnologías de la Información</option>
+                <option value="Procesos de Producción">Procesos de Producción</option>
+                <option value="Desarrollo de Negocios">Desarrollo de Negocios</option>
+                <option value="Ingeniería Industrial">Ingeniería Industrial</option>
+                <option value="Gestión Empresarial">Gestión Empresarial</option>
+                <option value="Mecatrónica">Mecatrónica</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Registrar</button>
+    </form>
+
+    <h3 class="my-4">Lista de Alumnos</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.matricula }}</td>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.carrera }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

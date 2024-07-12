@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container">
+  <div class="table-responsive">
+    <h2>Registro de Materias</h2>
+    <form method="post" class="form-inline">
+      <div class="form-group mb-2 mr-4">
+        <label for="id_materia" class="sr-only">ID de la Materia</label>
+        <input
+          type="text"
+          class="form-control"
+          id="id_materia"
+          name="id_materia"
+          placeholder="ID de la materia"
+          required
+        />
+      </div>
+      <div class="form-group mb-2 mr-4">
+        <label for="nombre_materia" class="sr-only">Nombre de la Materia</label>
+        <input
+          type="text"
+          class="form-control"
+          id="nombre_materia"
+          name="nombre_materia"
+          placeholder="Nombre de la materia"
+        />
+      </div>
+      <button type="submit" class="btn btn-warning">Registrar</button>
+    </form>
+
+    <h2 class="mt-4">Lista de Materias</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID de la Materia</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for materia in materias %}
+        <tr>
+          <td>{{ materia.id_materia }}</td>
+          <td>{{ materia.nombre_materia }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1;
+    min-height: 80vh;
+    padding: 20px; /* Añade espacio alrededor del contenido */
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0; /* Elimina el padding del ul */
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+.card img {
+    width: 50%;
+    margin: 10px auto;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: relative; /* Cambiar de fixed a relative para evitar problemas con contenido dinámico */
+    bottom: 0;
+    width: 100%;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Nuevas clases para hacer que las tablas sean responsive */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Añadir márgenes a los elementos dentro de la tabla */
+.table th, .table td {
+    padding: 15px;
+}
+
+/* Mejorar la responsividad de las tarjetas */
+@media (max-width: 768px) {
+    .card img {
+        width: 100%;
+    }
+    .card-body {
+        padding: 15px;
+    }
+    .container {
+        padding: 10px; /* Reducir padding en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        text-align: center;
+    }
+}

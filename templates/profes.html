@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Registro de Profesores</h2>
+<form method="post" class="form-inline">
+    <div class="form-group mb-2 mr-4">
+        <label for="no_empleado" class="sr-only">Número de Empleado</label>
+        <input type="text" class="form-control" id="no_empleado" name="no_empleado" placeholder="Número de empleado" required>
+    </div>
+    <div class="form-group mb-2 mr-4">
+        <label for="nombre" class="sr-only">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+    </div>
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>
+
+<h2 class="mt-5">Lista de Profesores</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número de Empleado</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for profesor in profes %}
+        <tr>
+            <td>{{ profesor.no_empleado }}</td>
+            <td>{{ profesor.nombre }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

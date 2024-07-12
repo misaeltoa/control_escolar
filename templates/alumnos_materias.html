@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Materias y Profesores Asignados</h2>
+    {% for am in alumnos_materias %}
+    <h3>{{ am.alumno.nombre }}</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Profesor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mp in am.materias_profes %}
+            <tr>
+                <td>{{ mp.materia }}</td>
+                <td>{{ mp.profesor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No se encontraron alumnos con materias y profesores asignados.</p>
+    {% endfor %}
+</div>
+{% endblock %}

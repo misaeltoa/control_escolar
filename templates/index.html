@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <h2 class="my-4">Panel de Control</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card border-primary">
+        <img
+          src="{{ url_for('static', filename='img/alumno.png') }}"
+          class="card-img-top"
+          alt="Alumnos"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-primary">Alumnos</h5>
+          <p class="card-text">Registrar y gestionar alumnos.</p>
+          <a href="{{ url_for('alumnos') }}" class="btn btn-primary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-secondary">
+        <img
+          src="{{ url_for('static', filename='img/profesor.png') }}"
+          class="card-img-top"
+          alt="Profesores"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-secondary">Profesores</h5>
+          <p class="card-text">Registrar y gestionar profesores.</p>
+          <a href="{{ url_for('profes') }}" class="btn btn-secondary">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-success">
+        <img
+          src="{{ url_for('static', filename='img/materias.png') }}"
+          class="card-img-top"
+          alt="Materias"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-success">Materias</h5>
+          <p class="card-text">Registrar y gestionar materias.</p>
+          <a href="{{ url_for('materias') }}" class="btn btn-success">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-danger">
+        <img
+          src="{{ url_for('static', filename='img/m-p.png') }}"
+          class="card-img-top"
+          alt="Asignar Materias y Profesores"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-danger">Asignar Materias y Profesores</h5>
+          <p class="card-text">Asignar materias a los profesores y alumnos.</p>
+          <a href="{{ url_for('asignar') }}" class="btn btn-danger">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-warning">
+        <img
+          src="{{ url_for('static', filename='img/reportes.png') }}"
+          class="card-img-top"
+          alt="Reportes"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-warning">Reportes</h5>
+          <p class="card-text">
+            Generar reportes de alumnos, profesores y materias.
+          </p>
+          <a href="{{ url_for('reportes') }}" class="btn btn-warning">Ver</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card border-info">
+        <img
+          src="{{ url_for('static', filename='img/m-a.png') }}"
+          class="card-img-top"
+          alt="Profesores y Materias Asignadas"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-info">Profesores y Materias Asignadas</h5>
+          <p class="card-text">
+            Ver profesores y materias asignadas a los alumnos.
+          </p>
+          <a href="{{ url_for('alumnos_materias') }}" class="btn btn-info">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
