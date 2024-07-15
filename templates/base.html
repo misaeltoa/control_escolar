@@ -5,62 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Web</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/libro-abierto.png') }}"/>
 </head>
-<body>
-    <div class="d-flex flex-column min-vh-100">
-        <!-- Barra de navegación -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Control Escolar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('alumnos') }}">Alumnos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profes') }}">Profesores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('materias') }}">Materias</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="asignarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Asignar
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="asignarDropdown">
-                            <a class="dropdown-item" href="{{ url_for('asignar') }}">Asignar Materias</a>
-                            <a class="dropdown-item" href="{{ url_for('alumnos_materias') }}">Ver Asignaciones</a>
+<body class="flex flex-col min-h-screen">
+    <!-- Barra de navegación -->
+    <nav class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a class="text-xl font-bold" href="#">Control Escolar</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="{{ url_for('index') }}" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Inicio</a>
+                        <a href="{{ url_for('alumnos') }}" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Alumnos</a>
+                        <a href="{{ url_for('profes') }}" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Profesores</a>
+                        <a href="{{ url_for('materias') }}" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Materias</a>
+                        <div class="relative">
+                            <button class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:bg-gray-700">
+                                Asignar
+                                <i class="fas fa-caret-down ml-1"></i>
+                            </button>
+                            <div class="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg py-1">
+                                <a href="{{ url_for('asignar') }}" class="block px-4 py-2 text-sm hover:bg-gray-200">Asignar Materias</a>
+                                <a href="{{ url_for('alumnos_materias') }}" class="block px-4 py-2 text-sm hover:bg-gray-200">Ver Asignaciones</a>
+                            </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('reportes') }}">Reportes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-danger ml-4" href="{{ url_for('logout') }}">Cerrar Sesión</a>
-                    </li>
-                </ul>
+                        <a href="{{ url_for('reportes') }}" class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Reportes</a>
+                        <a href="{{ url_for('logout') }}" class="hover:bg-red-700 bg-red-600 px-3 py-2 rounded-md text-sm font-medium">Cerrar Sesión</a>
+                    </div>
+                </div>
             </div>
-        </nav>
-        <!-- Contenido principal -->
-        <main class="flex-grow-1 container">
-            {% block content %}
-            {% endblock %}
-        </main>
-        <!-- Pie de página -->
-        <footer class="bg-dark text-white text-center py-3">
-            &copy; 2024 Sistema Web. Todos los derechos reservados.
-        </footer>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <script>
+        // Dropdown menu
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdownButton = document.querySelector('.relative button');
+            const dropdownMenu = dropdownButton.nextElementSibling;
+
+            dropdownButton.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!dropdownButton.contains(event.target)) {
+                    dropdownMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

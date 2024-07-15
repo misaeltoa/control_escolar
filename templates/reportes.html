@@ -1,60 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container mx-auto px-4 py-8">
     <div class="table-responsive">
-        <h2></h2>
-        <h3 class="mt-4">Alumnos</h3>
-        <table class="table">
-            <thead class="thead-dark">
+        <h2 class="text-2xl font-bold">Listado Completo</h2>
+
+        <h3 class="mt-4 text-xl font-bold">Alumnos</h3>
+        <table class="table-auto w-full mt-3">
+            <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th>Matrícula</th>
-                    <th>Nombre</th>
-                    <th>Carrera</th>
+                    <th class="px-4 py-2">Matrícula</th>
+                    <th class="px-4 py-2">Nombre</th>
+                    <th class="px-4 py-2">Carrera</th>
                 </tr>
             </thead>
             <tbody>
                 {% for alumno in alumnos %}
                 <tr>
-                    <td>{{ alumno.matricula }}</td>
-                    <td>{{ alumno.nombre }}</td>
-                    <td>{{ alumno.carrera }}</td>
+                    <td class="border px-4 py-2">{{ alumno.matricula }}</td>
+                    <td class="border px-4 py-2">{{ alumno.nombre }}</td>
+                    <td class="border px-4 py-2">{{ alumno.carrera }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h3 class="mt-4">Profesores</h3>
-        <table class="table table-bordered table-striped mt-3">
-            <thead class="thead-dark">
+        <h3 class="mt-4 text-xl font-bold">Profesores</h3>
+        <table class="table-auto w-full mt-3">
+            <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th>Número de Empleado</th>
-                    <th>Nombre</th>
+                    <th class="px-4 py-2">Número de Empleado</th>
+                    <th class="px-4 py-2">Nombre</th>
                 </tr>
             </thead>
             <tbody>
                 {% for profe in profes %}
                 <tr>
-                    <td>{{ profe.no_empleado }}</td>
-                    <td>{{ profe.nombre }}</td>
+                    <td class="border px-4 py-2">{{ profe.no_empleado }}</td>
+                    <td class="border px-4 py-2">{{ profe.nombre }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <h3 class="mt-4">Materias</h3>
-        <table class="table table-bordered table-striped mt-3">
-            <thead class="thead-dark">
+        <h3 class="mt-4 text-xl font-bold">Materias</h3>
+        <table class="table-auto w-full mt-3">
+            <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th>ID Materia</th>
-                    <th>Nombre de la Materia</th>
+                    <th class="px-4 py-2">ID Materia</th>
+                    <th class="px-4 py-2">Nombre de la Materia</th>
                 </tr>
             </thead>
             <tbody>
                 {% for materia in materias %}
                 <tr>
-                    <td>{{ materia.id_materia }}</td>
-                    <td>{{ materia.nombre_materia }}</td>
+                    <td class="border px-4 py-2">{{ materia.id_materia }}</td>
+                    <td class="border px-4 py-2">{{ materia.nombre_materia }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

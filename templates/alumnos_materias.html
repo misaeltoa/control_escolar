@@ -1,28 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2 class="my-4">Materias y Profesores Asignados</h2>
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold my-4">Materias y Profesores Asignados</h2>
     {% for am in alumnos_materias %}
-    <h3>{{ am.alumno.nombre }}</h3>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Profesor</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for mp in am.materias_profes %}
-            <tr>
-                <td>{{ mp.materia }}</td>
-                <td>{{ mp.profesor }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="mb-8">
+        <h3 class="text-xl font-semibold">{{ am.alumno.nombre }}</h3>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 shadow-lg">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Materia</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Profesor</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    {% for mp in am.materias_profes %}
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ mp.materia }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ mp.profesor }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
     {% else %}
-    <p>No se encontraron alumnos con materias y profesores asignados.</p>
+    <p class="text-gray-500">No se encontraron alumnos con materias y profesores asignados.</p>
     {% endfor %}
 </div>
 {% endblock %}
