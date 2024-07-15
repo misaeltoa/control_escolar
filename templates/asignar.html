@@ -2,33 +2,37 @@
 
 {% block content %}
 <div class="container mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold">Asignar Materia a Profesor y Alumno</h2>
-    <form method="POST" action="{{ url_for('asignar') }}" class="mt-4">
-        <div class="mb-4">
-            <label for="id_materia" class="block text-gray-700">Materia</label>
-            <select id="id_materia" name="id_materia" class="form-select mt-1 block w-full">
-                {% for materia in materias %}
-                <option value="{{ materia.id_materia }}">{{ materia.nombre_materia }}</option>
-                {% endfor %}
-            </select>
+    <h2 class="text-2xl font-bold my-4">Asignar Materia a Profesor y Alumno</h2>
+    <form method="POST" action="{{ url_for('asignar') }}" class="mb-8 bg-white p-6 rounded-lg shadow-md">
+        <div class="flex flex-wrap mb-6">
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label for="id_materia" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Materia</label>
+                <select id="id_materia" name="id_materia" class="form-select mt-1 block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+                    {% for materia in materias %}
+                    <option value="{{ materia.id_materia }}">{{ materia.nombre_materia }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label for="no_empleado" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Profesor</label>
+                <select id="no_empleado" name="no_empleado" class="form-select mt-1 block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+                    {% for profe in profes %}
+                    <option value="{{ profe.no_empleado }}">{{ profe.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                <label for="matricula" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Alumno</label>
+                <select id="matricula" name="matricula" class="form-select mt-1 block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
+                    {% for alumno in alumnos %}
+                    <option value="{{ alumno.matricula }}">{{ alumno.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
         </div>
-        <div class="mb-4">
-            <label for="no_empleado" class="block text-gray-700">Profesor</label>
-            <select id="no_empleado" name="no_empleado" class="form-select mt-1 block w-full">
-                {% for profe in profes %}
-                <option value="{{ profe.no_empleado }}">{{ profe.nombre }}</option>
-                {% endfor %}
-            </select>
+        <div class="flex justify-end">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Asignar</button>
         </div>
-        <div class="mb-4">
-            <label for="matricula" class="block text-gray-700">Alumno</label>
-            <select id="matricula" name="matricula" class="form-select mt-1 block w-full">
-                {% for alumno in alumnos %}
-                <option value="{{ alumno.matricula }}">{{ alumno.nombre }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Asignar</button>
     </form>
 </div>
 {% endblock %}

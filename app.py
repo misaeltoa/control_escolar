@@ -179,7 +179,8 @@ def reportes():
         alumnos = mongo.db.alumnos.find()
         profes = mongo.db.profes.find()
         materias = mongo.db.materias.find()
-        return render_template('reportes.html', alumnos=alumnos, profes=profes, materias=materias)
+        materias_profes = mongo.db.materias_profes.find()
+        return render_template('reportes.html', alumnos=alumnos, profes=profes, materias=materias, materias_profes=materias_profes)
     return redirect(url_for('login'))
 
 if __name__ == '__main__':
